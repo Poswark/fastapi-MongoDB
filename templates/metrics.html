@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Metrics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .metric {
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Metrics</h1>
+
+    <div class="metric">
+        <span class="metric-label">User Count:</span>
+        <span id="user-count"></span>
+    </div>
+
+    <div class="metric">
+        <span class="metric-label">Lider Count:</span>
+        <span id="lider-count"></span>
+    </div>
+
+    <script>
+        // Hacer una solicitud GET a la ruta '/metrics' y mostrar los resultados en la página
+        fetch('/metrics')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('user-count').textContent = data.UserCount;
+                document.getElementById('lider-count').textContent = data.LiderCount;
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>

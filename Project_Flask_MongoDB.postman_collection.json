@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "144c2778-246c-46e4-b6a8-0dbf00e32ccb",
+		"name": "Project_Flask_MongoDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29687673"
+	},
+	"item": [
+		{
+			"name": "newuser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{      \n        \"Name\": \"Raul Perez\",\n        \"ID_Empleado\": \"018271\",\n        \"Cargo\": \"SRE\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://web.flask-mongodb.orb.local/newuser",
+					"protocol": "https",
+					"host": [
+						"web",
+						"flask-mongodb",
+						"orb",
+						"local"
+					],
+					"path": [
+						"newuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "newuser Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{      \n        \"Name\": \"Raul Perez\",\n        \"ID_Empleado\": \"018271\",\n        \"Cargo\": \"SRE\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://web.flask-mongodb.orb.local/newuser",
+					"protocol": "https",
+					"host": [
+						"web",
+						"flask-mongodb",
+						"orb",
+						"local"
+					],
+					"path": [
+						"newuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteuser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{      \n        \"Name\": \"Raul Perez\",\n        \"ID_Empleado\": \"018271\",\n        \"Cargo\": \"SRE\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://web.flask-mongodb.orb.local/newuser",
+					"protocol": "https",
+					"host": [
+						"web",
+						"flask-mongodb",
+						"orb",
+						"local"
+					],
+					"path": [
+						"newuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://web.flask-mongodb.orb.local/metrics",
+					"protocol": "https",
+					"host": [
+						"web",
+						"flask-mongodb",
+						"orb",
+						"local"
+					],
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "metrics_user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://web.flask-mongodb.orb.local/metrics/user",
+					"protocol": "https",
+					"host": [
+						"web",
+						"flask-mongodb",
+						"orb",
+						"local"
+					],
+					"path": [
+						"metrics",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lider",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{      \n        \"Name\": \"Raul Perez\",\n        \"ID_Empleado\": \"018271\",\n        \"Cargo\": \"SRE\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://web.flask-mongodb.orb.local/newuser",
+					"protocol": "https",
+					"host": [
+						"web",
+						"flask-mongodb",
+						"orb",
+						"local"
+					],
+					"path": [
+						"newuser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

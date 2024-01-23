@@ -50,23 +50,10 @@ def newuser():
     document['_id'] = str(inserted_id)
 
     logger.info(f"Se agrego un nuevo usuario con exito en el endpoint /newuser: {document}")
-    return Response(json_util.dumps(document), status=201, mimetype='application/json')
+    #return Response(json_util.dumps(document), status=201, mimetype='application/json')
+    return Response(json_util.dumps(document), headers={'X-Success': 'Usuario agregado correctamente'}, status=201, mimetype='application/json')
     #return render_template('newuser.html')
 
-
-@app.route('/listuser', methods=['POST'])
-def listuser():
-    client, database, collection_employee_details, collection_metrics = get_mongo_client()
-    data = request.json
-    name = data.get('Name')
-    
-    query = {"Name": name}
-    results = list(collection_employee_details.find(query))
-    # Convertir los ObjectId en representaciones serializables
-    for result in results:
-        result['_id'] = str(result['_id'])
-
-    return jsonify(results)
 
     
 
@@ -114,9 +101,29 @@ def metrics():
         "LiderCount": lider_count
     }
     logger.info(f"Metrics : {metrics}")
-    return jsonify(metrics), 200
+    return jsonify (metrics), 200 
+    #return jsonify(metrics), 200
     #return render_template('metrics.html', UserCount=user_count, LiderCount=lider_count, status=200, mimetype='application/json')
 
+
+@app.route('/metrics/user', methods=['GET'])
+def user_metrics():
+    try:
+        client, database, collection_employee_details, _ = get_mongo_client() 
+        user_count = collection_employee_details.count_documents({})
+        users = []
+        for document in collection_employee_details.find({}):
+            document['_id'] = str(document['_id'])
+            users.append(document)
+        metrics = {
+                "UserCount": user_count,
+                "Users": users
+            }
+        
+        
+        return jsonify(metrics), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 

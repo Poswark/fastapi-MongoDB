@@ -5,6 +5,9 @@ from pymongo import MongoClient
 from dotenv import dotenv_values, load_dotenv , find_dotenv
 import logging, os
 from database import get_mongo_client
+import csv
+from io import StringIO
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -124,7 +127,35 @@ def user_metrics():
         return jsonify(metrics), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
 
+
+@app.route('/metrics/data.csv')
+def download_csv():
+    client, database, collection_employee_details, _ = get_mongo_client() 
+    data_from_mongo = collection_employee_details.find({})
+
+    fecha_actual = datetime.now().strftime("%Y-%m-%d")
+    # Crear un objeto StringIO para escribir en memoria
+    output = StringIO()
+
+    fieldnames = list(data_from_mongo[0].keys())
+
+    csv_writer = csv.DictWriter(output, fieldnames=fieldnames)
+    csv_writer.writeheader()
+
+    # Escribir los datos
+    for document in data_from_mongo:
+        csv_writer.writerow(document)
+
+    # Establecer la posición del puntero al principio del objeto StringIO
+    output.seek(0)
+
+    response = Response(output, mimetype='text/csv')
+    response.headers['Content-Disposition'] = f'attachment; filename=data-{fecha_actual}.csv'
+
+
+    return response, 200
 
 
 if __name__ == '__main__':
